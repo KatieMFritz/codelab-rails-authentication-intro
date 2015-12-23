@@ -1,31 +1,42 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Books</h1>
+<div>
+  <h1>Books!</h1>
+</div>
+<div>
+  <h2>Search Books</h2>
+  <%= form_tag books_path, method: :get do %>
+    <%= text_field_tag :title_search, params[:title_search] %>
+  <% end %>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Rating</th>
-      <th>Ebook</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @books.each do |book| %>
+<div>
+  <h2>Search Results</h2>
+  <table>
+    <thead>
       <tr>
-        <td><%= book.title %></td>
-        <td><%= book.rating %></td>
-        <td><%= book.ebook %></td>
-        <td><%= link_to 'Show', book %></td>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Title</th>
+        <th>Rating</th>
+        <th>Ebook</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <% @books.each do |book| %>
+        <tr>
+          <td><%= book.title %></td>
+          <td><%= book.rating %></td>
+          <td><%= book.ebook %></td>
+          <td><%= link_to 'Show', book %></td>
+          <td><%= link_to 'Edit', edit_book_path(book) %></td>
+          <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= link_to 'New Book', new_book_path %>
+  <br>
+
+  <%= link_to 'New Book', new_book_path %>
+</div>

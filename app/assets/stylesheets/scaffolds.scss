@@ -1,9 +1,11 @@
 body {
-  background-color: #fff;
+  background-color: #555;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 p, ol, ul, td {
@@ -29,11 +31,31 @@ a {
     color: #fff;
     background-color: #000;
   }
+  &[data-method='delete'] {
+    color: red;
+  }
 }
 
 div {
   &.field, &.actions {
     margin-bottom: 10px;
+  }
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+table {
+  border-collapse:collapse;
+  tbody {
+    tr {
+      border-top: 1px solid #555;
+      td {
+        padding: 10px 20px;;
+      }
+    }
   }
 }
 
