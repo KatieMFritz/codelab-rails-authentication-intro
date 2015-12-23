@@ -7,6 +7,8 @@ class BooksController < ApplicationController
     if params[:title_search].present?
       @books = Book.
         where('LOWER(title) LIKE LOWER(?)', "%#{params[:title_search]}%").
+        where(ebook: true).
+        where('rating > ?', 0).
         order(created_at: :desc)
         # returns all the  books where the value of
         # `params[:title_search]` case-insensitively matches the

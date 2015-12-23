@@ -9,11 +9,12 @@ div {
 }
 
 a[href='/books/new'] {
-  color: white !important;
+  color: white;
   text-decoration: none;
   font-weight: bold;
   background-color: green;
   border: 1px solid green;
   border-radius: 30px;
   padding: 10px;
+  margin-top: 40px;
 }
