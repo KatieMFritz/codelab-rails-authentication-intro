@@ -4,20 +4,17 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
+    @books = Book.all
     if params[:title_search].present?
-      @books = Book.
-        where('LOWER(title) LIKE LOWER(?)', "%#{params[:title_search]}%").
-        where(ebook: true).
-        where('rating > ?', 0).
-        order(created_at: :desc)
-        # returns all the  books where the value of
-        # `params[:title_search]` case-insensitively matches the
-        # title of the book, with results listed in descending
-        # order by when they were created (i.e. showing most
-        # recently created books first)
-    else
-      @books = Book.all
+      @books = @books.where('LOWER(title) LIKE LOWER(?)', "%#{params[:title_search]}%")
     end
+    if params[:is_ebook].present?
+      @books = @books.where('ebook = ?', params[:is_ebook] == 'true')
+    end
+    if params[:min_rating].present?
+      @books = @books.where('rating >= ?', "#{params[:min_rating]}")
+    end
+    @books = @books.order(created_at: :desc)
   end
 
   # GET /books/1
