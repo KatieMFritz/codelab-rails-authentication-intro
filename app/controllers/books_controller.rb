@@ -12,7 +12,7 @@ class BooksController < ApplicationController
       @books = @books.where('ebook = ?', params[:is_ebook] == 'true')
     end
     if params[:min_rating].present?
-      @books = @books.where('rating >= ?', "#{params[:min_rating]}")
+      @books = @books.where('rating >= ?', params[:min_rating])
     end
     @books = @books.order(created_at: :desc)
   end
