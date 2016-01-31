@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160131165845) do
+ActiveRecord::Schema.define(version: 20160131234357) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title",      default: "",    null: false
@@ -19,14 +19,6 @@ ActiveRecord::Schema.define(version: 20160131165845) do
     t.boolean  "ebook",      default: false, null: false
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-  end
-
-  create_table "posts", force: :cascade do |t|
-    t.string   "title"
-    t.text     "content"
-    t.boolean  "is_published"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
   end
 
   create_table "users", force: :cascade do |t|
